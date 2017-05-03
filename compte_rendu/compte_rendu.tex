@@ -85,7 +85,74 @@
 
 \maketitle
 
-\section{Partie 1}
+\section{Analyse d'échantillons de loi binomiale négative}
 
-    \quest{QUESTION 1}.
+    \quest{QUESTION 1}. On suppose dans un premier temps $r$ connu. L'estimateur
+    obtenu par la méthode des moments est noté $\tilde{p}_n$.
+
+    \begin{calculs}
+        \hspace{-1ex}\emph{Comme on suppose l'échantillon $X_1, X2, ..., X_n$ indépendantes
+        et de même loi binomiale négative $\mathcal{BN}(r, p)$, on a $E[X] = \frac{r}{p}$. Alors
+        l'estimateur des moments est :}
+
+        $$\tilde{p}_n = \frac{r}{\overline{X}_n}$$
+
+        \emph{où $\overline{X}_n$ désigne la moyenne empirique de l'échantillon.}
+    \end{calculs}
+
+    Une deuxième méthode d'estimation ponctuelle est l'estimation par maximum de
+    vraisemblance. On note maintenant l'estimateur trouvé $\hat{p}_n$.
+
+    \begin{calculs}
+        \begin{equation*}
+        \begin{split}
+            \mathcal{L}(p; x_1,...,x_n) & = P(X_1 = x_1, ..., X_n = x_n;p) \\
+                                        & = \prod\limits_{i = 1}^{n} P(X = x_i; p)
+        \end{split}
+        \end{equation*}
+
+        \emph{Plutôt que de dériver directement ce produit, on préfère maximiser
+        le logarithme de la fonction de vraisemblance $\mathcal{L}$, c'est la \textbf{log-vraisemblance} :}
+
+        \begin{equation*}
+        \begin{split}
+            \ln \mathcal{L}(p; x_1,...,x_n) & = \ln \prod\limits_{i = 1}^{n} P(X = x_i; p) = \sum\limits_{i = 1}^{n} \ln P(X = x_i; p) \\
+                                            & = \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} (1 - p)^{x_i - r} p^{r}
+        \end{split}
+        \end{equation*}
+
+        \emph{On cherche désormais à obtenir $\hat{p}_n$, valeur qui maximise
+        cette log-vraisemblance. On dérive pour cela l'expression précédente :}
+
+        \begin{equation*}
+        \begin{split}
+            \frac{\partial}{\partial p} \ln \mathcal{L}(p; x_1,...,x_n) & = \frac{\partial}{\partial p}
+                ( \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} ) + \sum\limits_{i = 1}^{n} (x_i - r) \frac{\partial}{\partial p} (\ln(1-p))
+                + \sum\limits_{i = 1}^{n} r \frac{\partial}{\partial p} (\ln(p))  \\
+                & = 0 - \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p}) + \sum\limits_{i = 1}^{n} \frac{r}{p}
+        \end{split}
+        \end{equation*}
+
+        \emph{Cette expression s'annule sous les conditions suivantes :}
+
+        \begin{equation*}
+        \begin{split}
+            - \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p}) + \sum\limits_{i = 1}^{n} \frac{r}{p} = 0 & \iff \sum\limits_{i = 1}^{n} \frac{-px_i + pr + (1 - p)r}{p(1-p)} = 0 \\
+              & \iff \sum\limits_{i = 1}^{n} -px_i + r = 0 \\
+              & \iff \sum\limits_{i = 1}^{n} \frac{r}{p} = \sum\limits_{i = 1}^{n} x_i \\
+              & \iff n\frac{r}{p} = \frac{1}{n} \sum\limits_{i = 1}^{n} x_i \\
+              & \iff \frac{r}{p} = \overline{X}_n
+        \end{split}
+        \end{equation*}
+
+        \emph{donc}
+
+        $$\hat{p}_n = \frac{r}{\overline{X}_n} = \tilde{p}_n$$
+
+        \medskip
+        \emph{Le cas où $p = 0$ ou $p = 1$ correspond à des situations triviales où
+        tous les $X_i$ sont identiques, il n'y a aucune part d'aléatoire.}
+    \end{calculs}
+
+    \quest{QUESTION 2}. 
 \end{document}
