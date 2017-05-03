@@ -1,0 +1,91 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{fullpage}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{url}
+\usepackage{mdframed}   % AJOUT
+\usepackage{xcolor}     % AJOUT
+\usepackage{float}      % AJOUT
+\usepackage{stmaryrd}   % AJOUT
+\usepackage{ntheorem}   % AJOUT
+\usepackage[french]{algorithm2e}    % AJOUT
+
+\lstset{basicstyle=\small\tt,
+  keywordstyle=\bfseries\color{Orchid},
+  stringstyle=\it\color{Tan},
+  commentstyle=\it\color{LimeGreen},
+  showstringspaces=false}
+
+\newtheorem{question}{Question}
+\newtheorem{exo}{Exercice}
+
+\newcommand{\dx}{\,dx}
+\newcommand{\ito}{,\dotsc,}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Poly}[1]{\mathcal{P}_{#1}}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\pars}[1]{\left(#1\right)}
+\newcommand{\bigpars}[1]{\bigl(#1\bigr)}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+% Personnalisation pour le TP
+\newcommand{\quest}[1]{\small\textbf{#1}\normalsize}
+\setlength{\parindent}{0pt}
+\newcommand*\biggestpart{}
+
+\newenvironment{sbmatrix}[1]
+ {\def\mysubscript{#1}\mathop\bgroup\begin{bmatrix}}
+ {\end{bmatrix}\egroup_{\textstyle\mathstrut\mysubscript}}
+
+\theoremstyle{nonumberplain}
+\newmdtheoremenv[%
+  backgroundcolor=gray!10,
+  linecolor=gray!75,
+  linewidth=2pt,
+  topline=false,
+  rightline=false,
+  bottomline=false]{calculs}{}
+
+\theoremstyle{nonumberplain}
+\newmdtheoremenv[%
+  backgroundcolor=blue!10,
+  linecolor=blue!75,
+  linewidth=2pt,
+  topline=false,
+  rightline=false,
+  bottomline=false]{ref_scilab}{}
+
+\theoremstyle{nonumberplain}
+\newmdtheoremenv[%
+  backgroundcolor=purple!10,
+  linecolor=purple!75,
+  linewidth=2pt,
+  topline=false,
+  rightline=false,
+  bottomline=false]{proposition}{}
+
+\title{Compte-rendu en \textit{Principes et méthodes statistiques} \\
+\textbf{Analyse de signaux oculométriques}}
+\author{Aurélien PEPIN, Léo DESBUREAUX, Julien LABOUR\'{E} (Ensimag)}
+\date{5 mai 2017}
+
+% ===============
+\begin{document}
+
+\maketitle
+
+\section{Partie 1}
+
+    \quest{QUESTION 1}.
+\end{document}
