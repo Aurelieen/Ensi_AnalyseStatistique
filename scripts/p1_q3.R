@@ -38,12 +38,15 @@ graphe_probabilites <- function(echantillon)
   # On estime et retourne un paramètre p
   # La pente de la droite des moindres carrés est ln(1 - p)
   pente = reg$coefficients[2]
-  # TODO. Retourner la pente
+  return(-exp(pente) + 1)
 }
 
-graphe_probabilites(groupe1_ord)
-# graphe_probabilites(groupe2_ord)
+res = graphe_probabilites(groupe1_ord)
+graphe_probabilites(groupe2_ord)
 
 # Jeu de données simulé pour la mesure de qualité
-nb_simulations = 1000;
-simulations = rgeom(nb_simulations, 0.5)
+nb_simulations = 10000;
+simulations = rgeom(nb_simulations, 0.2)
+simulations_ord = sort(simulations)
+
+graphe_probabilites(simulations_ord)

@@ -64,7 +64,7 @@
   linewidth=2pt,
   topline=false,
   rightline=false,
-  bottomline=false]{ref_scilab}{}
+  bottomline=false]{ref_r}{}
 
 \theoremstyle{nonumberplain}
 \newmdtheoremenv[%
@@ -104,55 +104,173 @@
     vraisemblance. On note maintenant l'estimateur trouvé $\hat{p}_n$.
 
     \begin{calculs}
+        \vspace{-2ex}
         \begin{equation*}
         \begin{split}
-            \mathcal{L}(p; x_1,...,x_n) & = P(X_1 = x_1, ..., X_n = x_n;p) \\
-                                        & = \prod\limits_{i = 1}^{n} P(X = x_i; p)
+            \mathcal{L}(p; x_1,...,x_n) & = P(X_1 = x_1, ..., X_n = x_n;p) = \prod\limits_{i = 1}^{n} P(X = x_i; p)
         \end{split}
         \end{equation*}
 
         \emph{Plutôt que de dériver directement ce produit, on préfère maximiser
         le logarithme de la fonction de vraisemblance $\mathcal{L}$, c'est la \textbf{log-vraisemblance} :}
 
+        \vspace{-2ex}
         \begin{equation*}
         \begin{split}
             \ln \mathcal{L}(p; x_1,...,x_n) & = \ln \prod\limits_{i = 1}^{n} P(X = x_i; p) = \sum\limits_{i = 1}^{n} \ln P(X = x_i; p) \\
-                                            & = \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} (1 - p)^{x_i - r} p^{r}
+                                            & = \sum\limits_{i = 1}^{n} \ln \left(\binom{x_i - 1}{r - 1} (1 - p)^{x_i - r} p^{r} \right)
         \end{split}
         \end{equation*}
 
+        \medskip
         \emph{On cherche désormais à obtenir $\hat{p}_n$, valeur qui maximise
         cette log-vraisemblance. On dérive pour cela l'expression précédente :}
 
+        \vspace{-2ex}
         \begin{equation*}
         \begin{split}
             \frac{\partial}{\partial p} \ln \mathcal{L}(p; x_1,...,x_n) & = \frac{\partial}{\partial p}
-                ( \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} ) + \sum\limits_{i = 1}^{n} (x_i - r) \frac{\partial}{\partial p} (\ln(1-p))
-                + \sum\limits_{i = 1}^{n} r \frac{\partial}{\partial p} (\ln(p))  \\
-                & = 0 - \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p}) + \sum\limits_{i = 1}^{n} \frac{r}{p}
+                \left( \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} \right) + \sum\limits_{i = 1}^{n} (x_i - r) \frac{\partial}{\partial p} (\ln(1-p))
+                + \sum\limits_{i = 1}^{n} r \frac{\partial}{\partial p} (\ln p)  \\
+                & = 0\hspace{21.5ex}- \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p})\hspace{13ex}+ \sum\limits_{i = 1}^{n} \frac{r}{p}
         \end{split}
         \end{equation*}
 
+        \newpage
+        \emph{}\newline
         \emph{Cette expression s'annule sous les conditions suivantes :}
 
+        \vspace{-2ex}
         \begin{equation*}
         \begin{split}
             - \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p}) + \sum\limits_{i = 1}^{n} \frac{r}{p} = 0 & \iff \sum\limits_{i = 1}^{n} \frac{-px_i + pr + (1 - p)r}{p(1-p)} = 0 \\
               & \iff \sum\limits_{i = 1}^{n} -px_i + r = 0 \\
               & \iff \sum\limits_{i = 1}^{n} \frac{r}{p} = \sum\limits_{i = 1}^{n} x_i \\
-              & \iff n\frac{r}{p} = \frac{1}{n} \sum\limits_{i = 1}^{n} x_i \\
+              & \iff n\frac{r}{p} = \sum\limits_{i = 1}^{n} x_i \\
               & \iff \frac{r}{p} = \overline{X}_n
         \end{split}
         \end{equation*}
 
-        \emph{donc}
+        \emph{Finalement, on retrouve donc le résultat précédent :}
 
         $$\hat{p}_n = \frac{r}{\overline{X}_n} = \tilde{p}_n$$
 
         \medskip
-        \emph{Le cas où $p = 0$ ou $p = 1$ correspond à des situations triviales où
-        tous les $X_i$ sont identiques, il n'y a aucune part d'aléatoire.}
+        \emph{Les cas aux limites où $p = 0$ ou $p = 1$ correspondent
+        à des situations triviales où tous les $X_i$ sont identiques, il n'y a aucune part d'aléatoire.}
     \end{calculs}
 
-    \quest{QUESTION 2}. 
+    \bigskip
+    \bigskip
+    \quest{QUESTION 2}. Pour une suite de variables aléatoires
+    iid $\{X_n\}_{n \ge 1}$, le théorème central-limite exprime la convergence
+    suivante :
+
+    \[
+        Z_n = \sqrt(n)\frac{\overline{X}_n - E[X]}{\sigma(x)} \rightarrow \mathcal{N}(0, 1)
+    \]
+
+    \begin{calculs}
+        \emph{La suite $X_1, ..., X_n$ satisfait les conditions du théorème et on a les données suivantes :}
+        \begin{itemize}
+            \item E[X] = $\frac{r}{p}$
+            \item $\sigma(X)$ = $\frac{\sqrt{(r (1 - p))}}{p}$
+        \end{itemize}
+
+        \emph{Dans notre cas :}
+
+        \vspace{-2ex}
+        \begin{equation*}
+        \begin{split}
+            Z_n & = \sqrt(n) p \frac{\overline{X}_n - \frac{r}{p}}{\sqrt{(r (1 - p))}} \\
+                & = \frac{\sqrt{n r}}{\sqrt{1 - p}} (\frac{p}{\hat{p}_n} - 1) \rightarrow \mathcal{N}(0, 1)
+        \end{split}
+        \end{equation*}
+
+        \emph{Sachant que } $ P(\mid Z_n \mid > u_\alpha) = \alpha$ \emph{, on a :}
+
+        \begin{equation*}
+        \begin{split}
+            \frac{\sqrt{n r}}{\sqrt{1 - p}} \mid \frac{p}{\hat{p}_n} - 1 \mid > u_\alpha
+            & \iff \sqrt{r n} \mid p - \hat{p}_n \mid > u_\alpha \hat{p}_n \sqrt{1 - p} \\
+            & \iff r n (p - \hat{p}_n)^2 > u_\alpha^2 \hat{p}_n^2 (1 - p) \\
+            & \iff r n p^2 + (-2 r n \hat{p}_n + u_\alpha^2 \hat{p}_n^2) p + \hat{p}_n^2 (rn - u_\alpha^2) > 0 \\
+            & \iff p^2 + \hat{p}_n (-2 + \frac{u_\alpha^2 \hat{p}_n}{r n}) p + \hat{p}_n^2 (1 - \frac{u_\alpha^2 \hat{p}_n}{r n}) > 0\\
+        \end{split}
+        \end{equation*}
+
+        \emph{Posons $\lambda = \frac{u_\alpha^2 \hat{p}_n}{r n}$, alors on a : }
+
+        \[
+            p^2 + p \hat{p}_n (-2 + \lambda \hat{p}_n) + \hat{p}_n^2 (1 - \lambda) > 0
+        \]
+
+        \emph{On obtient ainsi un polynôme en $p$ de degré 2, dont on déduit le discriminant :}
+
+        \[
+            \Delta = (\hat{p}_n^2 \lambda)^2 + 1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}
+        \]
+
+        \emph{\'{A} partir du discriminant, on peut calculer les racines du polynôme qui sont
+        les bornes de l'intervalle de confiance qu'on cherche à déterminer :}
+
+        \[
+            \text{IC} = \left[ \hat{p}_n - \frac{1}{2} \lambda \hat{p}_n^2 \left( 1 + \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}} \right) ;
+            \hat{p}_n - \frac{1}{2} \lambda \hat{p}_n^2 \left( 1 - \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}} \right) \right]
+        \]
+    \end{calculs}
+
+    \bigskip
+    \bigskip
+    \quest{QUESTION 3}. Pour tracer le graphe de probabilités de la loi
+    géométrique (qui correspond au cas $r = 1$), on cherche en premier lieu des
+    fonctions $h, \alpha, g, \beta$ telles que :
+
+      \[
+          h[F(k)] = \alpha(p)\ g(k) + \beta(p)
+      \]
+
+      \begin{ref_r}
+          \raisebox{-0.5ex}{\includegraphics[height=12px]{images/Rlogo.png}}
+          \emph{Se référer à :} \texttt{\emph{P1\_Q3\_Graphe\_Probabilites.r}}
+      \end{ref_r}
+
+      \vspace{-2ex}
+      \begin{calculs}
+          \emph{La fonction de répartition de la loi géométrique est :}
+
+          \vspace{-2ex}
+          \begin{equation*}
+          \begin{split}
+              F_\mathcal{G}(k) = 1 - (1 - p)^k & \iff 1 - F_\mathcal{G}(k) = (1 - p)^k \\
+                                               & \iff \ln(1 - F_\mathcal{G}(k)) = k \ln(1 - p)
+          \end{split}
+          \end{equation*}
+      \end{calculs}
+
+        Par identification, on établit les correspondances suivantes :
+        \medskip
+        \begin{itemize}
+            \item $h[F_\mathcal{G}(k)] = \ln(1 - F_\mathcal{G}(k))$
+            \item $\alpha(p) = \ln(1 - p)$
+            \item $g(k) = k$
+            \item $\beta(p) = 0$
+        \end{itemize}
+
+        \medskip
+        Le graphe de probabilités de $F_\mathcal{G}(k)$ est donc le nuage de points :
+
+          \[
+              (g(k_i^*); h(\frac{i}{n}) = (k_i^*; \ln(1 - \frac{i}{n}))\ \forall i \in \llbracket 1; n - 1 \rrbracket
+          \]
+
+        INSERER ICI DE MIRIFIQUES GRAPHIQUES
+        LE GROUPE 1 EST MEILLEUR QUE LE GROUPE 2
+
+        ON PREND ENSUITE LA PENTE DU GROUPE 1
+        ET ON L'INJECTE EN PARAMETRE D'UNE SIMU DE 10 000 DONNEES
+
+
+      \quest{QUESTION 4}. 
+
 \end{document}
