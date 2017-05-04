@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.29)  4 MAY 2017 17:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.29)  5 MAY 2017 00:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -935,37 +935,38 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@calculs=\count172
 \c@ref_r=\count173
 \c@proposition=\count174
+\c@commentaire=\count175
  (./compte_rendu.aux)
 \openout1 = `compte_rendu.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Info: Redefining \degres on input line 84.
-LaTeX Info: Redefining \dots on input line 84.
-LaTeX Info: Redefining \up on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Info: Redefining \degres on input line 93.
+LaTeX Info: Redefining \dots on input line 93.
+LaTeX Info: Redefining \up on input line 93.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count175
+\scratchcounter=\count176
 \scratchdimen=\dimen162
 \scratchbox=\box61
-\nofMPsegments=\count176
-\nofMParguments=\count177
+\nofMPsegments=\count177
+\nofMParguments=\count178
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count178
+\MPscratchCnt=\count179
 \MPscratchDim=\dimen163
-\MPnumerator=\count179
-\makeMPintoPDFobject=\count180
+\MPnumerator=\count180
+\makeMPintoPDFobject=\count181
 \everyMPtoPDFconversion=\toks47
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -984,76 +985,87 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count181
+\c@lstlisting=\count182
 \AtBeginShipoutBox=\box62
-LaTeX Font Info:    Try loading font information for U+msa on input line 86.
+LaTeX Font Info:    Try loading font information for U+msa on input line 95.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 86.
+LaTeX Font Info:    Try loading font information for U+msb on input line 95.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 86.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 95.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 221.
- [2]
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 <images/Rlogo.png, id=26, 542.025pt x 418.26262pt>
 File: images/Rlogo.png Graphic file (type png)
  <use images/Rlogo.png>
-Package pdftex.def Info: images/Rlogo.png used on input line 234.
+Package pdftex.def Info: images/Rlogo.png used on input line 248.
 (pdftex.def)             Requested size: 15.60666pt x 12.04504pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 235.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 249.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [3 <./images/Rlogo.png>]
-Package mdframed Info: Not enough space on this page on input line 284.
+) [3 <./images/Rlogo.png>] <images/p1_q3_groupe1.png, id=35, 495.35063pt x 369.
+63094pt>
+File: images/p1_q3_groupe1.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--331
+<use images/p1_q3_groupe1.png>
+Package pdftex.def Info: images/p1_q3_groupe1.png used on input line 291.
+(pdftex.def)             Requested size: 371.51207pt x 277.2225pt.
+
+<images/p1_q3_groupe2.png, id=36, 495.35063pt x 369.63094pt>
+File: images/p1_q3_groupe2.png Graphic file (type png)
+
+<use images/p1_q3_groupe2.png>
+Package pdftex.def Info: images/p1_q3_groupe2.png used on input line 319.
+(pdftex.def)             Requested size: 371.51207pt x 277.2225pt.
+ [4 <./images/p1_q3_groupe1.png (PNG copy)>]
+<images/p1_q3_verif.png, id=41, 495.35063pt x 369.63094pt>
+File: images/p1_q3_verif.png Graphic file (type png)
+
+<use images/p1_q3_verif.png>
+Package pdftex.def Info: images/p1_q3_verif.png used on input line 337.
+(pdftex.def)             Requested size: 371.51207pt x 277.2225pt.
+ [5 <./images/p1_q3_groupe2.png (PNG copy)> <./images/p1_q3_verif.png (PNG copy
+)>]
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--336
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
-! Undefined control sequence.
-l.337 ...uit $(\hat{r}_{n}, \hat{p}_{n}) = \argmax
-                                                   \mathcal{L}(r_i, p_i; x_1...
-
-? q
-OK, entering \batchmode...
+[6]
 \tf@thm=\write3
 \openout3 = `compte_rendu.thm'.
 
- [4] (./compte_rendu.aux) )
+ [7] (./compte_rendu.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 16325 strings out of 493013
- 278604 string characters out of 6133328
- 383175 words of memory out of 5000000
- 19675 multiletter control sequences out of 15000+600000
- 20971 words of font info for 57 fonts, out of 8000000 for 9000
+ 16366 strings out of 493013
+ 279430 string characters out of 6133328
+ 373664 words of memory out of 5000000
+ 19711 multiletter control sequences out of 15000+600000
+ 22501 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,18n,46p,10432b,2574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,26n,46p,10444b,2621s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm
 -super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
@@ -1064,21 +1076,22 @@ mi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
 fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on compte_rendu.pdf (4 pages, 294178 bytes).
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
+Output written on compte_rendu.pdf (7 pages, 389957 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
