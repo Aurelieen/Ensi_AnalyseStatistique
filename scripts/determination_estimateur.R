@@ -27,11 +27,13 @@ estimateur_BN <- function(echantillon)
   
   pn <- rn/Xn
   
+  # print(Xn / (Xn + Sn^2))
   return(list(pn, rn))
 }
 
 #On approxime groupe1 à une loi géométrique
 estimateur_Geo(groupe1)
+
 #On approxime groupe1 et groupe2 à une loi binomiale négative
 estimateur_BN(groupe1)
 estimateur_BN(groupe2)

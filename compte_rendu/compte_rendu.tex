@@ -557,6 +557,43 @@
           \item La loi binomiale négative $\mathcal{BN}(r, p)$.
       \end{enumerate}
 
+      \quest{QUESTION 2}. Dans la \textbf{question 1.3}, nous avons appliqué le
+      graphe de probabilités de la fonction de répartition de la loi géométrique
+      $\mathcal{G}(p)$ aux deux groupes de données. Nous en avons déduit que $\mathcal{G}(p)$
+      était un modèle plausible pour le \textbf{groupe 1}, mais pas pour le \textbf{groupe 2}.
+
+      \medskip
+      Poursuivons cette démarche dans cette section.
+
+      \begin{ref_r}
+          \raisebox{-0.5ex}{\includegraphics[height=12px]{images/Rlogo.png}}
+          \emph{Se référer à :} \texttt{\emph{P2\_Q2\_Determination\_Estimateur.r}}
+      \end{ref_r}
+
+      \bigskip
+      \textbf{Groupe 1}. \newline
+      La loi géométrique (cas particulier de la loi binomiale négative pour $r = 1$)
+      est un modèle suffisamment plausible pour ce groupe. Par la méthode des moments, on
+      trouve l'estimateur :
+
+      \[
+            \tilde{p}_{n_1} = \frac{1}{\overline{X}_n} = \frac{1}{6.498} \simeq 0.1538
+      \]
+
+      Puisque la loi géométrique est un cas particulier de la loi binomiale
+      négative, la méthode des moments conçue à la \textbf{question 1.5} s'applique aussi
+      à ce groupe. Elle donne une estimation de :
+
+      \[
+            \tilde{p}_{n_2} = \frac{\overline{X}_n}{\overline{X}_n + S_n^{2}} \simeq 0.1528
+      \]
+
+      \medskip
+      Pour rappel, le paramètre trouvé par le graphe de probabilités
+      $(\tilde{p}_n)_{g1}$ dans la première section est $0.1508$, soit une valeur à
+      peu près égale. \`{A} chaque fois qu'un individu de l'échantillon fixe
+      un mot, il y a donc un peu plus de 15\% de chances qu'il en déduise le thème.
+
       \vspace{8cm}
       \quest{QUESTION 2}. à voir en fonction de la q4.
       \quest{QUESTION 3}. SIMULATION.
