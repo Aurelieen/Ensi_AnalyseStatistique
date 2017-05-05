@@ -98,8 +98,27 @@ validation_grands_nombres(100,5000,0.7,0.05)
 # On peut conclure de ces résultats que la moyenne empirique se rapproche bien de l'espérance
 # quand n augmente, ce qui confirme le résultat de la loi faible des grands nombre
 
+validation_theoreme_central <- function(m,n,p)
+{
+  # Simulation des m échantillons de taille n et de paramètre p
+  echantillons <- simule_geometriques(m,n,p)
+  # Validation des moyennes empiriques
+  moyennes <- matrix(0,1,m)
+  moy <- 1/p
+  std <- sqrt(1-p)/p
+  for (k in (1:m))
+  {
+    moyennes[k] <- mean(echantillons[k,])
+  }
+  min <- min(moyennes)
+  max <- max(moyennes)
+  brk <- seq(min,max,length = 20)
+  hist(moyennes,xlab = "", ylab = "Effectif", breaks = brk)
+  par(new=TRUE)
+  plot(function(x) dnorm(x,moy,std),  moy-4*std, moy+4*std,xlab="Moyenne",ylab="",main = "", col = "red")
+}
 
-
+validation_theoreme_central(1000,20000,0.2)
 
 
 
