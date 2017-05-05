@@ -594,8 +594,126 @@
       peu près égale. \`{A} chaque fois qu'un individu de l'échantillon fixe
       un mot, il y a donc un peu plus de 15\% de chances qu'il en déduise le thème.
 
+      \medskip
+      Au seuil de $\alpha = 5\%$, on réutilise l'intervalle de confiance déterminé dans
+      la \textbf{question 1.2} et appliqué au cas particulier de la loi géométrique qui donne :
+
+      \[
+            \texttt{[0.1510331; 0.1567018]}
+      \]
+
+      On en déduit que la régression linéaire du graphe de probabilités a légèrement sous-estimé
+      le paramètre de la loi géométrique du \textbf{groupe 1} avec une probabilité de 95\%.
+
+      \vspace{-1.5ex}
+      \begin{center}
+          \includegraphics[scale=0.65]{images/p2_q2_verif1.png}
+      \end{center}
+
+      \vspace{-3ex}
+      \begin{commentaire}
+          \hspace{-1ex}\emph{Le paramètre obtenu par la régression linéaire (tronquée) est $p_n \simeq 0.23$.
+          Cette méthode de vérification perd de son intérêt car l'échantillon est réduit et sensible aux valeurs aberrantes}.
+      \end{commentaire}
+
+      \bigskip
+      \textbf{Groupe 2}. \newline
+      Cette fois-ci, le modèle géométrique n'est pas suffisant comme l'a montré
+      la régression linéaire appliquée à la \textbf{question 1.2}. On s'intéresse à sa version généralisée
+      avec un paramètre $r$ en plus : c'est la loi binomiale négative $\mathcal{BN}(r, p)$.
+
+      \smallskip
+      Le diagramme en colonnes possède d'ailleurs l'allure de la fonction de
+      masse de la loi binomiale négative avec une moyenne environ égale à 19. Via
+      la méthode de la \textbf{question 1.5}, on approche les paramètres
+      $r$ et $p$ avec les estimateurs des moments $\tilde{r}_n$ et $\tilde{p}_n$ :
+
+      \[
+            \tilde{r}_{n} = \lceil \frac{\overline{X}^2_n}{\overline{X}_n + S_n^{2}} \rceil \simeq \lceil 4.88 \rceil = 5 \qquad\text{et}\qquad
+            \tilde{p}_{n_1} = \frac{\overline{X}_n}{\overline{X}_n + S_n^{2}} \simeq 0.2476
+      \]
+
+      \medskip
+      On arrondit $\tilde{r}_{n}$ à l'entier le plus proche car c'est un paramètre
+      entier. Pour avoir des paramètres \og plus cohérents entre eux \fg, on peut
+      aussi estimer $p$ à partir de $\tilde{r}_{n}$ :
+
+      \[
+            \tilde{p}_{n_2} = \frac{\tilde{r}_{n}}{\overline{X}_n} = \frac{5}{19.738} \simeq 0.2533
+      \]
+
+      \bigskip
+      \begin{center}
+          \includegraphics[scale=0.65]{images/p2_q2_verif2.png}
+      \end{center}
+
+      \begin{commentaire}
+          \hspace{-1ex}\emph{Le paramètre obtenu par la régression linéaire (tronquée) est $p_n \simeq 0.2379$.
+          Là encore, on a enlevé le dernier tiers des valeurs que la division rend aberrantes.
+          Pour autant, la taille de l'échantillon rend là aussi la méthode peu fiable}.
+      \end{commentaire}
+
+      \newpage\quest{QUESTION 3}. On admet ici
+      que les variables ${\{X_i\}}_{1 \le i \le n}$ du \textbf{groupe 1} suivent une loi
+      géométrique et que les variables ${\{Y_i\}}_{1 \le i \le n}$ du \textbf{groupe 2} suivent une loi binomiale négative :
+
+      \[
+            X_i \hookrightarrow \mathcal{G}(0.1538) \qquad\text{et}\qquad Y_i \hookrightarrow \mathcal{BN}(5, 0.2533)
+      \]
+
+      \bigskip
+      Grâce à l'expression respective de l'espérance de ces deux lois, on en déduit que :
+
+      \[
+            \mathbb{E}[X_i] = \frac{1}{p} = \frac{1}{0.1538} \simeq 6.502 \qquad\text{et}\qquad \mathbb{E}[Y_i] = \frac{r}{p} = \frac{5}{0.2533} \simeq 19.739
+      \]
+
+      \bigskip
+      \textbf{Conclusion}. \newline
+      Dans le \textbf{groupe 1}, il faut donc en moyenne \texttt{6.5} fixations pour identifier
+      un type de texte tandis que le \textbf{groupe 2} a besoin de \texttt{19.7} fixations en moyenne, c'est-à-dire
+      environ trois fois plus.
+
+      \medskip
+      Les modèles étendent les réalisations des échantillons et permettent de
+      connaître la probabilité que le nombre de fixations soit supérieur à $10$.
+
+      \medskip
+      Calculons cette probabilité pour les deux lois.
+
+          \begin{calculs}
+              \vspace{-2ex}
+              \begin{equation*}
+              \begin{split}
+                  P(X_i > 10) & = (1 - p)^{10} \\
+                              & = (1 - 0.1538)^{10} \\
+                              & = 0.8462^{10} \\
+                              & = 0.1882479
+              \end{split}
+              \end{equation*}
+
+              \begin{equation*}
+              \begin{split}
+                  P(Y_i > 10) & = 1 - \sum\limits_{k = r}^{10} \binom{k - 1}{r - 1}\ p^r\ (1 - p)^{k - r} \\
+                              & = 1 - \sum\limits_{k = 5}^{10} \binom{k - 1}{4}\ 0.2533^5\ 0.7467^{k - 5} \\
+                              & = 0.67554
+              \end{split}
+              \end{equation*}
+          \end{calculs}
+
+     \bigskip
+     \bigskip
+     Dans le \textbf{groupe 1}, la probabilité que le nombre de fixations soit supérieur à $10$ est faible.
+     Cela s'explique notamment par le fait que la majorité des réalisations est concentrée au début de la série.
+     La médiane empirique du \textbf{groupe 1} vaut d'ailleurs 5. Ainsi, ce groupe n'a pas eu de problèmes majeurs pour
+     identifier les thèmes des textes qui lui ont été soumis.
+
+     \bigskip
+     Au contraire, dans le \textbf{groupe 2}, la probabilité que le nombre de
+     fixations soit supérieur à $10$ est assez élevé. De plus, [difficulté commune]
+
+
       \vspace{8cm}
       \quest{QUESTION 2}. à voir en fonction de la q4.
       \quest{QUESTION 3}. SIMULATION.
-      \quest{QUESTION 4}. SIMULATION.
 \end{document}

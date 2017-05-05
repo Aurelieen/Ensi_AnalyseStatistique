@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.22)  5 MAY 2017 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.22)  5 MAY 2017 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1107,20 +1107,36 @@ File: images/Rlogo.png Graphic file (type png)
 <use images/Rlogo.png>
 Package pdftex.def Info: images/Rlogo.png used on input line 569.
 (pdftex.def)             Requested size: 15.60666pt x 12.04504pt.
+
+<images/p2_q2_verif1.png, id=62, 628.59843pt x 331.2375pt>
+File: images/p2_q2_verif1.png Graphic file (type png)
+
+<use images/p2_q2_verif1.png>
+Package pdftex.def Info: images/p2_q2_verif1.png used on input line 610.
+(pdftex.def)             Requested size: 408.58414pt x 215.30182pt.
+ [10 <./images/p2_q2_verif1.png (PNG copy)>]
+<images/p2_q2_verif2.png, id=66, 628.59843pt x 406.51875pt>
+File: images/p2_q2_verif2.png Graphic file (type png)
+
+<use images/p2_q2_verif2.png>
+Package pdftex.def Info: images/p2_q2_verif2.png used on input line 647.
+(pdftex.def)             Requested size: 408.58414pt x 264.23404pt.
+ [11 <./images/p2_q2_verif2.png (PNG copy)>]
 \tf@thm=\write3
 \openout3 = `compte_rendu.thm'.
 
- [10] (./compte_rendu.aux) )
+
+[12] [13] (./compte_rendu.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 16015 strings out of 493014
- 271972 string characters out of 6133336
+ 16028 strings out of 493014
+ 272260 string characters out of 6133336
  359125 words of memory out of 5000000
- 19356 multiletter control sequences out of 15000+600000
- 22501 words of font info for 59 fonts, out of 8000000 for 9000
+ 19366 multiletter control sequences out of 15000+600000
+ 23127 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,26n,46p,10444b,2600s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm
@@ -1145,10 +1161,10 @@ exlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/cm-super/sfti1728.pfb></usr/local/texli
 ve/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on compte_rendu.pdf (10 pages, 478243 bytes).
+Output written on compte_rendu.pdf (13 pages, 529871 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 144 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
