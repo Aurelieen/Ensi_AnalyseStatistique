@@ -122,7 +122,7 @@ validation_theoreme_central(1000,20000,0.2)
 
 
 
-=======
+
 # Exercice 3
 
 # Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p
@@ -190,6 +190,11 @@ validation_intervalles <- function(m,n,p,alpha)
 }
 
 validation_intervalles(10000,1000,0.8,0.05)
+validation_intervalles(100,1000,0.8,0.05)
+validation_intervalles(10000,10,0.8,0.05)
+validation_intervalles(10000,1000,0.2,0.05)
+validation_intervalles(10000,1000,0.8,0.25)
+
 
 # Q2 - Vérification de la loi faible des grands nombres
 
@@ -245,7 +250,57 @@ validation_theoreme_central <- function(m,n,p)
   plot(function(x) dnorm(x,moy,std),  moy-4*std, moy+4*std,xlab="Moyenne empirique de l'échantillon (loi géométrique)",ylab="",main = "",xaxt="n", yaxt="n", col = "red")
 }
 
+validation_theoreme_central(1000,5,0.2)
+validation_theoreme_central(1000,10,0.2)
+validation_theoreme_central(1000,20,0.2)
+validation_theoreme_central(1000,100,0.2)
+validation_theoreme_central(1000,200,0.2)
+validation_theoreme_central(1000,500,0.2)
 validation_theoreme_central(1000,1000,0.2)
+validation_theoreme_central(1000,2000,0.2)
+validation_theoreme_central(1000,5000,0.2)
 
 # Pour un nombre d'échantillons suffisement grand (m = 1000), on voit que quand n augmente la loi de répartition
 # des moyennes empiriques se rapproche d'une loi normale
+
+# Q4 - Validation du théorème central limite
+
+simule_BN(m,n,r,p) <- function(m,n,r,p)
+  
+{
+  for (k in (1:m))
+  {
+    # rgeom(n,p) simule un échantillon de taille n d'une variable aléatoire Y 
+    # telle que Y+1 suit une loi géométrique de paramètre p
+    y = rnbinom(n,r,p)
+    echantillons[k,] <- y+1
+  }
+}
+
+echantillons
+  
+test_loi_BN <- function(m,n,r,p)
+{
+  # Simulation des m échantillons de taille n et de paramètre p
+  echantillons <- simule_BN(m,n,r,p)
+ 
+   # Calcul des estimateurs pn et rn pour chaque échantillon
+  ecart_p = c()
+  ecrat_r = c()
+  for (k in (1:m)){
+    
+    Xn_k = mean(echantillons[k,])
+    Sn_k = sd(echantillons[k,])
+    
+    #On calcule la somme des écarts à la moyenne
+    
+    ####### IL FAUT FAIRE LA SOMME DES ECARTS A LA MOYENNE
+    ####### DANS UN CAS, ET LA SOMME DES CARRES DANS L'AUTRE
+    
+    ecart_p[k] = (Xn_k/(Xn_k + Sn_k)) - p
+    ecart_p[k] = (Xn_k^2/(Xn_k + Sn_k)) - r
+    
+    }
+  
+  }
+  
