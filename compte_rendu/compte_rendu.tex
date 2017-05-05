@@ -87,7 +87,7 @@
 
 \title{Compte-rendu en \textit{Principes et méthodes statistiques} \\
 \textbf{Analyse de signaux oculométriques}}
-\author{Aurélien PEPIN, Léo DESBUREAUX, Julien LABOUR\'{E} (Ensimag)}
+\author{Aurélien PEPIN, Léo DESBUREAUX, Julien LABOUR\'{E} --- Grenoble INP - Ensimag}
 \date{5 mai 2017}
 
 % ===============
@@ -447,9 +447,117 @@
         \end{enumerate}
 
     \newpage
-    \section{PARTIE 2 ECRIRE LE TITRE}
+    \section{Anayse des deux jeux de données}
 
-      \quest{QUESTION 1}. Faire comme pour l'exercice sur la pollution.
+      \quest{QUESTION 1}. Dans le cadre de ce projet, on s'intéresse à deux groupes de lecteurs.
+      Le premier compte 227 individus tandis que le deuxième en compte 168. Pour chaque individu, on
+      s'intéresse au nombre de fixations relevées pendant la lecture des textes, différents d'un groupe à l'autre.
+
+      \begin{ref_r}
+          \raisebox{-0.5ex}{\includegraphics[height=12px]{images/Rlogo.png}}
+          \emph{Se référer à :} \texttt{\emph{P2\_Q1\_Statistique\_Descriptive.r}}
+      \end{ref_r}
+
+      Les données relevées sont des réalisations entières de variables quantitatives.
+      Les indicateurs suivants aident à décrire les deux échantillons :
+
+        \medskip
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+                \hline
+                \textbf{Indicateur} & \textbf{Groupe 1} & \textbf{Groupe 2} \\
+                \hline
+                Moyenne empirique & \hspace{8ex}6.498\hspace{8ex} & \hspace{8ex}19.738\hspace{8ex} \\
+                \hline
+                Valeurs extrêmes & \hspace{8ex}1; 31\hspace{8ex} & \hspace{8ex}6; 50\hspace{8ex} \\
+                \hline
+                Mode & \hspace{8ex}1\hspace{8ex} & \hspace{8ex}22\hspace{8ex} \\
+                \hline
+                Médiane empirique & \hspace{8ex}5\hspace{8ex} & \hspace{8ex}20\hspace{8ex} \\
+                \hline
+                \hline
+                Variance empirique & \hspace{8ex}36.003\hspace{8ex} & \hspace{8ex}59.979\hspace{8ex} \\
+                \hline
+                \'{E}cart-type empirique & \hspace{8ex}6\hspace{8ex} & \hspace{8ex}7.75\hspace{8ex} \\
+                \hline
+                Coefficient de variation empirique & \hspace{8ex}0.92\hspace{8ex} & \hspace{8ex}0.39\hspace{8ex} \\
+                \hline
+            \end{tabular}
+
+        \bigskip
+        \medskip
+        \textbf{Quartiles du groupe 1 (via \texttt{summary})}
+        \medskip
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            \textbf{Min.} & \textbf{$1^{er}$ quart.} & \textbf{Médiane} & \textbf{Moy. emp.} & \textbf{$3^e$ quart.} & \textbf{Max.} \\
+            \hline
+                \hspace{3ex}1\hspace{3ex} & \hspace{3ex}1\hspace{3ex} & \hspace{3ex}5\hspace{3ex} & \hspace{3ex}6.5\hspace{3ex} & \hspace{3ex}9.5\hspace{3ex} & \hspace{3ex}31\hspace{3ex} \\
+            \hline
+        \end{tabular}
+
+        \bigskip
+        \medskip
+        \textbf{Quartiles du groupe 2 (via \texttt{summary})}
+        \medskip
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            \textbf{Min.} & \textbf{$1^{er}$ quart.} & \textbf{Médiane} & \textbf{Moy. emp.} & \textbf{$3^e$ quart.} & \textbf{Max.} \\
+            \hline
+                \hspace{3ex}6\hspace{3ex} & \hspace{3ex}13\hspace{3ex} & \hspace{3ex}20\hspace{3ex} & \hspace{3ex}19.74\hspace{3ex} & \hspace{3ex}25\hspace{3ex} & \hspace{3ex}50\hspace{3ex} \\
+            \hline
+        \end{tabular}
+      \end{center}
+
+      \medskip
+      \`{A} partir de ces indicateurs de tendance centrale et de dispersion pour
+      les deux groupes de données, on peut déjà tirer quelques enseignements :
+
+      \bigskip
+      \begin{itemize}
+          \item Les personnes du \textbf{groupe 1} ont généralement besoin de beaucoup moins
+          de fixations pour lire leurs textes que celles du \textbf{groupe 2}. Parmi elles, un très grand nombre
+          n'a d'ailleurs eu besoin que d'une seule fixation.
+
+          \medskip
+          \item Le coefficient de variation empirique est moins importante chez
+          les personnes du \textbf{groupe 2} que chez les personnes du \textbf{groupe 1}.
+          Cela signifie que la moyenne empirique est un meilleur résumé
+          de l'échantillon dans ce groupe que dans l'autre.
+
+          \medskip
+          \item Dans le \textbf{groupe 2}, la valeur minimale est 6, bien
+          supérieure au mode du \textbf{groupe 1}. Deux hypothèses (non mutuellement exclusives)
+          peuvent l'expliquer. Soit la série de textes du \textbf{groupe 2} était plus
+          compliquée que celle du \textbf{groupe 1} et obligeait \emph{forcément}
+          à arrêter son regard sur certains mots ; soit les individus
+          du \textbf{groupe 2} présentent un caractère commun comme une difficulté à lire.
+      \end{itemize}
+
+      \begin{center}
+          \includegraphics[scale=0.75]{images/p2_q1_1.png}
+      \end{center}
+
+      Le mode de ce diagramme semble indiquer qu'il y a eu un mot en particulier
+      sur lequel les individus du \textbf{groupe 1} se sont fixés massivement.
+
+      \begin{center}
+          \includegraphics[scale=0.75]{images/p2_q1_2.png}
+      \end{center}
+
+      Ici au contraire, il n'y a pas réellement de tendance générale. Les données
+      sont assez bien réparties autour de la moyenne empirique.
+
+      \medskip
+      Dans la section suivante, on essaie de trouver des lois de probabilités pour
+      modéliser l'évolution de ces réalisations. Parmi elles, deux se distinguent :
+
+      \begin{enumerate}
+          \item La loi géométrique $\mathcal{G}(p)$ ;
+          \item La loi binomiale négative $\mathcal{BN}(r, p)$.
+      \end{enumerate}
+
+      \vspace{8cm}
       \quest{QUESTION 2}. à voir en fonction de la q4.
       \quest{QUESTION 3}. SIMULATION.
       \quest{QUESTION 4}. SIMULATION.
