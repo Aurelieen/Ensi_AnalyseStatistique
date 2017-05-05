@@ -37,5 +37,3 @@ sd(groupe2)
 
 barplot(table(groupe2))
 
-
-

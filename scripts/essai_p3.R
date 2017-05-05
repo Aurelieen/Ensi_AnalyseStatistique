@@ -5,7 +5,7 @@
 
 simule_geometriques <- function(m,n,p)
 {
-  # On créée un vecteur contenant les m échantillons
+  # On crée un vecteur contenant les m échantillons
   echantillons <- matrix(nrow = m, ncol = n)
   
   for (k in (1:m))

@@ -5,7 +5,7 @@
 p_r = 4
 p_p = 0.4
 
-donnees = rnbinom(10000000, p_r, p_p) + p_r
+donnees = rnbinom(1000000, p_r, p_p) + p_r
 donnees_ord = sort(donnees)
 
 # FONCTION
@@ -23,6 +23,7 @@ repartition <- function(echantillon) {
 # FONCTION
 g <- function(echantillon, table_d) {
   table_g = c()
+  ensemble_i= c()
   
   for (i in 1:max(echantillon)) {
     if (!is.na(table_d[i + 1]) & table_d[i + 1] > 0) {
