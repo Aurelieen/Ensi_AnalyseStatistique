@@ -32,11 +32,10 @@ intervalle <- function(echantillon, alpha)
   Pn <- 1/Xn
   # On calcule les valeurs nécessaires à l'évaluation de l'intervalle
   Ua <- qnorm(1 - alpha/2)
-  lambda <- (Ua^2)*Pn/n
-  inter <- sqrt(1 + 4*(1-Pn)/(lambda*Pn))
-  # ON évalue l'intervalle
-  b_inf <- Pn - (1/2)*lambda*(Pn^2)*(1 + inter)
-  b_sup <- Pn - (1/2)*lambda*(Pn^2)*(1 - inter)
+  inter <- Ua*sqrt((Xn-1)/(n*(Xn^3)))
+  # On évalue l'intervalle
+  b_inf <- Pn - inter
+  b_sup <- Pn + inter
   IC <- c(b_inf,b_sup)
   IC
 }
@@ -55,18 +54,17 @@ validation_intervalles <- function(m,n,p,alpha)
     # Calcul de l'interval de confiance
     IC = intervalle(echantillons[k,],alpha)
     # Vérification de la validité de l'intervalle
-    if (p > IC[1] & p < IC[2])
+    if (p >= IC[1] & p <= IC[2])
     {
       bons_intervalles <- bons_intervalles + 1
     }
   }
-  cat("p ", p, "\n")
   taux <- bons_intervalles/m
   cat(taux*100, "% des intervalles encadrent bien le paramètre p. Pourcentage attendu : ", (1 - alpha)*100, "%")
 
 }
 
-validation_intervalles(10000,1000,0.4,0.05)
+validation_intervalles(10000,1000,0.8,0.05)
 
 # Q2 - Vérification de la loi faible des grands nombres
 
