@@ -1,4 +1,4 @@
-# Exercice 1 - Question 3
+# Partie 1 - Question 3
 # Graphe de probabilités pour la loi géométrique
 
 # Récupération des données
@@ -45,7 +45,7 @@ graphe_probabilites <- function(echantillon)
 }
 
 pg1 = graphe_probabilites(groupe1_ord)
-# pg2 = graphe_probabilites(groupe2_ord)
+pg2 = graphe_probabilites(groupe2_ord)
 
 # Jeu de données simulé pour la mesure de qualité
 nb_simulations = 10000;
