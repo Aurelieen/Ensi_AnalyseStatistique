@@ -41,7 +41,7 @@ sd(groupe2)
 coef_var_g2 = sd(groupe2) / mean(groupe2)
 coef_var_g2
 
-# Affichage de lhistogramme
+# Affichage de l'histogramme
 
 barplot(table(groupe2), xlab="Nombre de fixations pour la lecture des textes", ylab="Nombre de personnes pour ce nombre de fixations")
 title("Diagramme en colonnes du nombre de fixations pour le groupe 2", col.main="chartreuse4")

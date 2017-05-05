@@ -1,3 +1,128 @@
+# Exercice 3 - Question 1
+# Simulation d'une loi géométrique et vérification des intervalles de confiance
+
+# Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p
+
+simule_geometriques <- function(m,n,p)
+{
+  # On crée un vecteur contenant les m échantillons
+  echantillons <- matrix(nrow = m, ncol = n)
+  
+  for (k in (1:m))
+  {
+    # rgeom(n,p) simule un échantillon de taille n d'une variable aléatoire Y 
+    # telle que Y+1 suit une loi géométrique de paramètre p
+    y = rgeom(n,p)
+    echantillons[k,] <- y+1
+  }
+
+  echantillons
+}
+
+# Fonction évaluant l'intervalle de confiance asymptotique de seuil alpha
+# pour une échantillon donné suivant une loi géométrique
+
+intervalle <- function(echantillon, alpha)
+{
+  n <- length(echantillon)
+  # On évalue la moyenne empirique de l'echantillon et on en déduit une estimation du paramètre
+  # de la loi que suivent les variables aléatoires
+  Xn <- mean(echantillon)
+  Pn <- 1/Xn
+  # On calcule les valeurs nécessaires à l'évaluation de l'intervalle
+  Ua <- qnorm(1 - alpha/2)
+  lambda <- (Ua^2)*Pn/n
+  inter <- sqrt(1 + 4*(1-Pn)/(lambda*Pn))
+  # ON évalue l'intervalle
+  b_inf <- Pn - (1/2)*lambda*(Pn^2)*(1 + inter)
+  b_sup <- Pn - (1/2)*lambda*(Pn^2)*(1 - inter)
+  cat("Pn ", Pn, "\n")
+  IC <- c(b_inf,b_sup)
+  cat("IC ", IC, "\n")
+  IC
+}
+
+# Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p, et calculant
+# ensuite leur intervalle de confiance de seuil alpha pour Pn obtenu via une évaluation empirique. 
+# Elle affiche ensuite le taux d'intervalles de confiance contenant p sur les m calculés.
+validation_intervalles <- function(m,n,p,alpha)
+{
+  # Simulation des m échantillons de taille n et de paramètre p
+  echantillons = simule_geometriques(m,n,p)
+  # Validation des intervalles
+  bons_intervalles <- 0
+  for (k in (1:m))
+  {
+    # Calcul de l'interval de confiance
+    IC = intervalle(echantillons[k,],alpha)
+    # Vérification de la validité de l'intervalle
+    if (p > IC[1] & p < IC[2])
+    {
+      bons_intervalles <- bons_intervalles + 1
+    }
+  }
+  cat("p ", p, "\n")
+  taux <- bons_intervalles/m
+  cat(taux*100, "% des intervalles encadrent bien le paramètre p. Pourcentage attendu : ", (1 - alpha)*100, "%")
+
+}
+
+# validation_intervalles(10000,1000,0.4,0.05)
+
+# Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p, et calculant
+# ensuite leur moyenne empirique. Elle affiche ensuite si le nombre de moyennes empiriques ayant 
+# un écart inférieur à e avec l'espérance
+
+validation_grands_nombres <- function(m,n,p,e)
+{
+  # Simulation des m échantillons de taille n et de paramètre p
+  echantillons <- simule_geometriques(m,n,p)
+  # Validation des moyennes empiriques
+  esperance <- 1/p
+  bonnes_moyennes <- 0
+  for (k in (1:m))
+  {
+    moyenne_empirique = mean(echantillons[k,])
+    if (abs(moyenne_empirique - esperance) < e)
+    {
+      bonnes_moyennes <- bonnes_moyennes + 1
+    }
+  }
+  cat(bonnes_moyennes, "échantillons (de taille",n,") sur les", m ,"simulés ont un écart entre leur espérance et leur moyenne empirique inférieur à", e, "\n")
+}
+
+# Execution en faisant augmenter la valeur de n
+validation_grands_nombres(100,500,0.7,0.05)
+validation_grands_nombres(100,1000,0.7,0.05)
+validation_grands_nombres(100,5000,0.7,0.05)
+# On peut conclure de ces résultats que la moyenne empirique se rapproche bien de l'espérance
+# quand n augmente, ce qui confirme le résultat de la loi faible des grands nombre
+
+validation_theoreme_central <- function(m,n,p)
+{
+  # Simulation des m échantillons de taille n et de paramètre p
+  echantillons <- simule_geometriques(m,n,p)
+  # Validation des moyennes empiriques
+  moyennes <- matrix(0,1,m)
+  moy <- 1/p
+  std <- sqrt(1-p)/p
+  for (k in (1:m))
+  {
+    moyennes[k] <- mean(echantillons[k,])
+  }
+  min <- min(moyennes)
+  max <- max(moyennes)
+  brk <- seq(min,max,length = 20)
+  hist(moyennes,xlab = "", ylab = "Effectif", breaks = brk)
+  par(new=TRUE)
+  plot(function(x) dnorm(x,moy,std),  moy-4*std, moy+4*std,xlab="Moyenne",ylab="",main = "", col = "red")
+}
+
+validation_theoreme_central(1000,20000,0.2)
+
+
+
+=======
 # Exercice 3
 
 # Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p
@@ -124,6 +249,3 @@ validation_theoreme_central(1000,1000,0.2)
 
 # Pour un nombre d'échantillons suffisement grand (m = 1000), on voit que quand n augmente la loi de répartition
 # des moyennes empiriques se rapproche d'une loi normale
-
-
-
