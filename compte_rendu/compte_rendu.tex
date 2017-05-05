@@ -11,11 +11,11 @@
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{url}
-\usepackage{mdframed}   % AJOUT
-\usepackage{xcolor}     % AJOUT
-\usepackage{float}      % AJOUT
-\usepackage{stmaryrd}   % AJOUT
-\usepackage{ntheorem}   % AJOUT
+\usepackage{mdframed}               % AJOUT
+\usepackage{xcolor}                 % AJOUT
+\usepackage{float}                  % AJOUT
+\usepackage{stmaryrd}               % AJOUT
+\usepackage{ntheorem}               % AJOUT
 \usepackage[french]{algorithm2e}    % AJOUT
 
 \lstset{basicstyle=\small\tt,
@@ -75,6 +75,15 @@
   rightline=false,
   bottomline=false]{proposition}{}
 
+\theoremstyle{nonumberplain}
+\newmdtheoremenv[%
+  backgroundcolor=green!10,
+  linecolor=green!75,
+  linewidth=2pt,
+  topline=false,
+  rightline=false,
+  bottomline=false]{commentaire}{}
+
 \title{Compte-rendu en \textit{Principes et méthodes statistiques} \\
 \textbf{Analyse de signaux oculométriques}}
 \author{Aurélien PEPIN, Léo DESBUREAUX, Julien LABOUR\'{E} (Ensimag)}
@@ -87,12 +96,12 @@
 
 \section{Analyse d'échantillons de loi binomiale négative}
 
-    \quest{QUESTION 1}. On suppose dans un premier temps $r$ connu. L'estimateur
+    \quest{QUESTION 1}. On suppose dans un premier temps le paramètre $r$ connu. L'estimateur
     obtenu par la méthode des moments est noté $\tilde{p}_n$.
 
     \begin{calculs}
-        \hspace{-1ex}\emph{Comme on suppose l'échantillon $X_1, X2, ..., X_n$ indépendantes
-        et de même loi binomiale négative $\mathcal{BN}(r, p)$, on a $E[X] = \frac{r}{p}$. Alors
+        \hspace{-1ex}\emph{Comme on suppose les variables $X_1, X2, ..., X_n$ de l'échantillon indépendantes
+        et de même loi binomiale négative $\mathcal{BN}(r, p)$, on a $\mathbb{E}[X] = \frac{r}{p}$. Alors
         l'estimateur des moments est :}
 
         $$\tilde{p}_n = \frac{r}{\overline{X}_n}$$
@@ -117,8 +126,8 @@
         \vspace{-2ex}
         \begin{equation*}
         \begin{split}
-            \ln \mathcal{L}(p; x_1,...,x_n) & = \ln \prod\limits_{i = 1}^{n} P(X = x_i; p) = \sum\limits_{i = 1}^{n} \ln P(X = x_i; p) \\
-                                            & = \sum\limits_{i = 1}^{n} \ln \left(\binom{x_i - 1}{r - 1} (1 - p)^{x_i - r} p^{r} \right)
+            \ln \mathcal{L}(p; x_1,...,x_n) & = \ln \prod\limits_{i = 1}^{n} P(X = x_i; p) = \sum\limits_{i = 1}^{n}\ \ln P(X = x_i; p) \\
+                                            & = \sum\limits_{i = 1}^{n}\ \ln \left(\binom{x_i - 1}{r - 1} (1 - p)^{x_i - r} p^{r} \right)
         \end{split}
         \end{equation*}
 
@@ -130,7 +139,7 @@
         \begin{equation*}
         \begin{split}
             \frac{\partial}{\partial p} \ln \mathcal{L}(p; x_1,...,x_n) & = \frac{\partial}{\partial p}
-                \left( \sum\limits_{i = 1}^{n} \ln \binom{x_i - 1}{r - 1} \right) + \sum\limits_{i = 1}^{n} (x_i - r) \frac{\partial}{\partial p} (\ln(1-p))
+                \left( \sum\limits_{i = 1}^{n}\ \ln \binom{x_i - 1}{r - 1} \right) + \sum\limits_{i = 1}^{n} (x_i - r) \frac{\partial}{\partial p} (\ln(1-p))
                 + \sum\limits_{i = 1}^{n} r \frac{\partial}{\partial p} (\ln p)  \\
                 & = 0\hspace{21.5ex}- \sum\limits_{i = 1}^{n} (\frac{x_i - r}{1 - p})\hspace{13ex}+ \sum\limits_{i = 1}^{n} \frac{r}{p}
         \end{split}
@@ -163,60 +172,65 @@
     \bigskip
     \bigskip
     \quest{QUESTION 2}. Pour une suite de variables aléatoires
-    iid $\{X_n\}_{n \ge 1}$, le théorème central-limite exprime la convergence
+    i. i. d. $\{X_n\}_{n \ge 1}$, le \textbf{théorème central limite} exprime la convergence
     suivante :
 
     \[
-        Z_n = \sqrt(n)\frac{\overline{X}_n - E[X]}{\sigma(x)} \rightarrow \mathcal{N}(0, 1)
+        Z_n = \sqrt n\ \frac{\overline{X}_n - E[X]}{\sigma(x)} \xrightarrow[n \rightarrow +\infty]{} \mathcal{N}(0, 1)
+    \]
+
+    \bigskip
+    Soient $X_1, ..., X_n$ les variables de l'échantillon de loi $\mathcal{BN}(r, p)$. Par définition, on a :
+
+    \[
+        \mathbb{E}[X] = \frac{r}{p}\qquad\text{et}\qquad \sigma(X) = \frac{\sqrt{r (1 - p)}}{p}
     \]
 
     \begin{calculs}
-        \emph{La suite $X_1, ..., X_n$ satisfait les conditions du théorème et on a les données suivantes :}
-        \begin{itemize}
-            \item E[X] = $\frac{r}{p}$
-            \item $\sigma(X)$ = $\frac{\sqrt{(r (1 - p))}}{p}$
-        \end{itemize}
-
-        \emph{Dans notre cas :}
+        \hspace{-1ex}\emph{La suite $X_1, ..., X_n$ satisfait les conditions du théorème. On définit ainsi :}
 
         \vspace{-2ex}
         \begin{equation*}
         \begin{split}
-            Z_n & = \sqrt(n) p \frac{\overline{X}_n - \frac{r}{p}}{\sqrt{(r (1 - p))}} \\
-                & = \frac{\sqrt{n r}}{\sqrt{1 - p}} (\frac{p}{\hat{p}_n} - 1) \rightarrow \mathcal{N}(0, 1)
+            Z_n & = p\sqrt n\ \frac{\overline{X}_n - \frac{r}{p}}{\sqrt{r (1 - p)}} \\
+                & = \frac{\sqrt{n r}}{\sqrt{1 - p}} \left(\frac{p}{\hat{p}_n} - 1\right) \xrightarrow[n \rightarrow +\infty]{} \mathcal{N}(0, 1)
         \end{split}
         \end{equation*}
 
-        \emph{Sachant que } $ P(\mid Z_n \mid > u_\alpha) = \alpha$ \emph{, on a :}
+        \newpage
+        \emph{}\newline
+        \emph{Sachant que } $\mathbb{P}(\mid\!Z_n\!\mid\ > u_\alpha) = \alpha$\emph{, on peut construire un intervalle de confiance :}
 
+        \vspace{-2ex}
         \begin{equation*}
         \begin{split}
-            \frac{\sqrt{n r}}{\sqrt{1 - p}} \mid \frac{p}{\hat{p}_n} - 1 \mid > u_\alpha
-            & \iff \sqrt{r n} \mid p - \hat{p}_n \mid > u_\alpha \hat{p}_n \sqrt{1 - p} \\
-            & \iff r n (p - \hat{p}_n)^2 > u_\alpha^2 \hat{p}_n^2 (1 - p) \\
-            & \iff r n p^2 + (-2 r n \hat{p}_n + u_\alpha^2 \hat{p}_n^2) p + \hat{p}_n^2 (rn - u_\alpha^2) > 0 \\
-            & \iff p^2 + \hat{p}_n (-2 + \frac{u_\alpha^2 \hat{p}_n}{r n}) p + \hat{p}_n^2 (1 - \frac{u_\alpha^2 \hat{p}_n}{r n}) > 0\\
+            \frac{\sqrt{n r}}{\sqrt{1 - p}} \mid\!\frac{p}{\hat{p}_n} - 1\!\mid\ > u_\alpha
+            & \iff \sqrt{n r}\;\mid\!p - \hat{p}_n\!\mid\ > u_\alpha\;\hat{p}_n \sqrt{1 - p} \\
+            & \iff r n\;(p - \hat{p}_n)^2 > u_\alpha^2\;\hat{p}_n^2 (1 - p) \\
+            & \iff r n p^2 + (-2 r n\;\hat{p}_n + u_\alpha^2\;\hat{p}_n^2)\;p + \hat{p}_n^2\;(rn - u_\alpha^2) > 0 \\
+            & \iff p^2 + \hat{p}_n\;(-2 + \frac{u_\alpha^2\;\hat{p}_n}{r n})\;p + \hat{p}_n^2\;(1 - \frac{u_\alpha^2\;\hat{p}_n}{r n}) > 0\\
         \end{split}
         \end{equation*}
 
-        \emph{Posons $\lambda = \frac{u_\alpha^2 \hat{p}_n}{r n}$, alors on a : }
+        \emph{Posons $\lambda = \dfrac{u_\alpha^2\;\hat{p}_n}{r n}$ et réécrivons l'équation précédente : }
 
         \[
-            p^2 + p \hat{p}_n (-2 + \lambda \hat{p}_n) + \hat{p}_n^2 (1 - \lambda) > 0
+            p^2 + p \hat{p}_n (-2 + \lambda\;\hat{p}_n) + \hat{p}_n^2\;(1 - \lambda) > 0
         \]
 
-        \emph{On obtient ainsi un polynôme en $p$ de degré 2, dont on déduit le discriminant :}
+        \medskip
+        \emph{C'est un polynôme en $p$ dont on déduit le discriminant $\Delta$ :}
 
         \[
-            \Delta = (\hat{p}_n^2 \lambda)^2 + 1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}
+            \Delta = (\hat{p}_n^2\;\lambda)^2 + 1 + \frac{4(1 - \hat{p}_n)}{\lambda\;\hat{p}_n}
         \]
 
         \emph{\'{A} partir du discriminant, on peut calculer les racines du polynôme qui sont
         les bornes de l'intervalle de confiance qu'on cherche à déterminer :}
 
         \[
-            \text{IC} = \left[ \hat{p}_n - \frac{1}{2} \lambda \hat{p}_n^2 \left( 1 + \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}} \right) ;
-            \hat{p}_n - \frac{1}{2} \lambda \hat{p}_n^2 \left( 1 - \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda \hat{p}_n}} \right) \right]
+            \text{IC}_{p} = \left[ \hat{p}_n - \frac{1}{2} \lambda\;\hat{p}_n^2 \left( 1 + \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda\;\hat{p}_n}} \right)\ ;
+            \ \hat{p}_n - \frac{1}{2} \lambda\;\hat{p}_n^2 \left( 1 - \sqrt{1 + \frac{4(1 - \hat{p}_n)}{\lambda\;\hat{p}_n}} \right) \right]
         \]
     \end{calculs}
 
@@ -261,39 +275,103 @@
         Le graphe de probabilités de $F_\mathcal{G}(k)$ est donc le nuage de points :
 
           \[
-              (g(k_i^*); h(\frac{i}{n}) = (k_i^*; \ln(1 - \frac{i}{n}))\ \forall i \in \llbracket 1; n - 1 \rrbracket
+              \left(g(k_i^*)\;;\;h(\frac{i}{n})\right) = \left(k_i^*\;;\;\ln(1 - \frac{i}{n})\right)\quad\forall i \in \llbracket 1; n - 1 \rrbracket
           \]
 
-        INSERER ICI DE MIRIFIQUES GRAPHIQUES
-        LE GROUPE 1 EST MEILLEUR QUE LE GROUPE 2
+        Ce graphe permet de mesurer visuellement l'adéquation entre
+        une distribution et la loi qu'elle est supposée suivre. On vérifie
+        pour cela que les points affichés sont alignés.
 
-        ON PREND ENSUITE LA PENTE DU GROUPE 1
-        ET ON L'INJECTE EN PARAMETRE D'UNE SIMU DE 10 000 DONNEES
+        \medskip
+        Par une régression linéaire, on peut aussi ajouter la droite des moindres
+        carrés de $y$ en $x$. Appliquons ces outils aux groupes de données dont
+        on dispose ainsi qu'à un échantillon aléatoire.
+
+        \begin{center}
+            \includegraphics[scale=0.75]{images/p1_q3_groupe1.png}
+        \end{center}
+
+        \vspace{-2ex}
+        \begin{commentaire}
+            \hspace{-1ex}\emph{Sur le \textbf{groupe 1}, on remarque que les points sont bien alignés en eux, sauf
+            pour quelques mesures aux extrémités. La loi géométrique semble donc être ici un modèle plausible.}
+
+            \medskip
+            \emph{Pour estimer le paramètre $p$, on peut utiliser la régression linéaire. La droite des moindres
+            carrés a pour coefficient directeur $m = \alpha(p) = \ln(1 - p)$.}
+
+            \[
+                m = \ln(1 - p) \iff p = 1 - e^m
+            \]
+
+            \emph{En \texttt{R}, le coefficient directeur est donné par l'attribut \texttt{coefficients}
+            de la régression linéaire. Dans le cas du \textbf{groupe 1}, on estime ainsi :}
+
+            \[
+                p = p_{g_1} \simeq 0.1508
+            \]
+        \end{commentaire}
+
+        Si la loi géométrique semble un modèle plausible pour le \textbf{groupe 1}, il n'en
+        est pas de même pour le groupe de données suivant.
+
+        \begin{center}
+            \includegraphics[scale=0.75]{images/p1_q3_groupe2.png}
+        \end{center}
+
+        \vspace{-2ex}
+        \begin{commentaire}
+            \hspace{-1ex}\emph{Dans le cas du \textbf{groupe 2}, les points sont peu alignés.
+            Ils semblent plutôt suivre la trajectoire d'une courbe, ce qui laisse penser que la
+            loi géométrique n'est pas un modèle adapté pour cet échantillon. Il est donc inutile
+            de chercher à approcher un paramètre $p$.}
+        \end{commentaire}
+
+        Pour s'assurer que le graphe de probabilités modélise bien ce qu'on cherche, on
+        utilise enfin un dernier graphique. On simule puis on trie 10 000 réalisations d'une loi géométrique.
+        Comme les points sont alignés de manière quasi-parfaite, on en
+        déduit que le graphe de probabilités est bien celui de la loi géométrique.
 
 
-      \quest{QUESTION 4}. Sous-partie a).
+        \begin{center}
+            \includegraphics[scale=0.75]{images/p1_q3_verif.png}
+        \end{center}
+
+      \quest{QUESTION 4}. \textbf{\textcolor{red}{(a)}}. Soit $X \hookrightarrow \mathcal{BN}(r, p)$.
       \begin{calculs}
           \vspace{-2ex}
           \begin{equation*}
           \begin{split}
-              \frac{P(X = x)}{P(X = x + 1)} & = \frac{\binom{x - 1}{r - 1} (1 - p)^{x - r}p^r}{\binom{x}{r - 1} (1 - p)^{x + 1 - r}p^r} \\
-                                            & = \frac{\frac{(x - 1)!}{(r - 1)!\ (x - r)!} (1 - p)^{x - r}p^r}{\frac{x!}{(r - 1)!\ (x - r + 1)!} (1 - p)^{x + 1 - r}p^r} \\
+              \frac{P(X = x)}{P(X = x + 1)} & = \frac{\binom{x - 1}{r - 1} (1 - p)^{x - r}p^r}{\binom{x}{r - 1} (1 - p)^{x + 1 - r}p^r} \\[2ex]
+                                            & = \frac{\frac{(x - 1)!}{(r - 1)!\ (x - r)!}\;(1 - p)^{x - r}\;p^r}{\frac{x!}{(r - 1)!\ (x - r + 1)!}\;(1 - p)^{x + 1 - r}\;p^r} \\[2ex]
                                             & = \frac{x - r + 1}{x (1 - p)}
           \end{split}
           \end{equation*}
       \end{calculs}
 
-      Sous-partie b). On définit $g(x) = x \frac{P(X = x)}{P(X = x + 1)} = \frac{1}{1 - p}x + \frac{1 - r}{1 - p}$.
+      \bigskip
+      \textbf{\textcolor{red}{(b)}}. \`{A} partir du calcul précédent, on définit la fonction $g(x)$ telle que :
+          \[
+              g(x) = x\;\frac{P(X = x)}{P(X = x + 1)} = \frac{1}{1 - p}x + \frac{1 - r}{1 - p}
+          \]
+
       \begin{calculs}
-          \emph{On affiche le nuage de points $(x, g(x))$. \'{A} partir d'une régression linéaire, on trace
-          la droite au sens des moindres carrés $y = ax + b$ pour obtenir un coefficient directeur :}
+          \hspace{-1ex}\emph{On affiche le nuage de points $(x, g(x))$. Grâce à une régression linéaire, on trace
+          la droite au sens des moindres carrés $y = ax + b$ pour obtenir un coefficient directeur et une ordonnée
+          à l'origine à partir desquels on peut retrouver $p$ :}
 
             \[
-                a = \frac{1}{1 - p} \iff p = 1 - \frac{1}{a}
+                a = \frac{1}{1 - p} \iff p_{g_2} := p = 1 - \frac{1}{a}
+            \]
+
+            \[
+                b = \frac{1 - r}{1 - p} \iff p_{g_3} := p = 1 - \frac{1 - r}{b}
             \]
       \end{calculs}
 
-      Sous-partie c). COMMENCER A r ! ! ! (via paramètre de la loi)
+      \bigskip
+      \textbf{\textcolor{red}{(c)}}. Vérifions si les deux méthodes d'estimation graphique
+      de la question précédente sont efficaces sur un jeu de données simulées.
 
       \quest{QUESTION 5}. On suppose désormais que le paramètre $r$ est inconnu.
       On va donc chercher à estimer simultanément les deux paramètres $(r, p)$ via la méthode des moments.
@@ -334,7 +412,7 @@
 
       ETAPE 3. Pour chaque couple $(r_i, p_i) = (i, \hat{p}_{n, i})$, on calcule sa vraisemblance.\newline
 
-      ETAPE 4. On en déduit $(\hat{r}_{n}, \hat{p}_{n}) = argmax\limits_{i} \mathcal{L}(r_i, p_i; x_1, ..., x_n)$.
+      ETAPE 4. On en déduit $(\hat{r}_{n}, \hat{p}_{n}) = argmax en i \mathcal{L}(r_i, p_i; x_1, ..., x_n)$.
       faire une petite phrase de conclusion
 
     \section{PARTIE 2 ECRIRE LE TITRE}

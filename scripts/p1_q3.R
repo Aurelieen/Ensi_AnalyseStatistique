@@ -1,4 +1,4 @@
-# Exercice 1 - Question 3
+# Partie 1 - Question 3
 # Graphe de probabilités pour la loi géométrique
 
 # Récupération des données
@@ -16,7 +16,7 @@ groupe2_ord <- sort(groupe2)
 # PRECONDITIONS : <echantillon> est trié
 graphe_probabilites <- function(echantillon)
 {
-  # Le graphe de probabilités est de la forme h[F(k)] alpha(p)g(k) + beta(p)
+  # Le graphe de probabilités est de la forme h[F(k)] = alpha(p)g(k) + beta(p)
   # avec, dans le cas de la loi géométrique :
   #   -> h[F(k)] = ln(1 - F(k))
   #   -> alpha(p) = ln(1 - p)
@@ -26,7 +26,10 @@ graphe_probabilites <- function(echantillon)
   # On trace donc (g(k_i*), h(i/n))
   # NB : on évite le cas ln(0) indéfini en allant jusqu'à n - 1
   n = length(echantillon)
-  plot(head(echantillon, -1), log(1 - seq(1:(n-1))/n))
+  plot(head(echantillon, -1), log(1 - seq(1:(n-1))/n), xlab="Données triées k_i* simulées", ylab="Points h(i/n) de référence")
+  
+  # Affichage graphique
+  title("Vérification du graphe de probabilités", col.main="chartreuse4")
   
   # Si on considère les points alignés, on peut essayer d'en déduire une pente
   # qui représentera le paramètre p. On trace la droite des moindres carrés. 
@@ -41,12 +44,12 @@ graphe_probabilites <- function(echantillon)
   return(-exp(pente) + 1)
 }
 
-res = graphe_probabilites(groupe1_ord)
-graphe_probabilites(groupe2_ord)
+pg1 = graphe_probabilites(groupe1_ord)
+pg2 = graphe_probabilites(groupe2_ord)
 
 # Jeu de données simulé pour la mesure de qualité
 nb_simulations = 10000;
-simulations = rgeom(nb_simulations, 0.2)
+simulations = rgeom(nb_simulations, pg1)
 simulations_ord = sort(simulations)
 
-graphe_probabilites(simulations_ord)
+pgs = graphe_probabilites(simulations_ord)
