@@ -38,6 +38,7 @@
 \newcommand{\pars}[1]{\left(#1\right)}
 \newcommand{\bigpars}[1]{\bigl(#1\bigr)}
 \newcommand{\set}[1]{\left\{#1\right\}}
+\DeclareMathOperator*{\argmax}{\arg\!\max}
 
 % Personnalisation pour le TP
 \newcommand{\quest}[1]{\small\textbf{#1}\normalsize}
@@ -373,17 +374,47 @@
       \textbf{\textcolor{red}{(c)}}. Vérifions si les deux méthodes d'estimation graphique
       de la question précédente sont efficaces sur un jeu de données simulées.
 
+      \begin{center}
+          \includegraphics[scale=0.75]{images/p1_q4_verif.png}
+      \end{center}
+
+      \begin{ref_r}
+          \raisebox{-0.5ex}{\includegraphics[height=12px]{images/Rlogo.png}}
+          \emph{Se référer à :} \texttt{\emph{P1\_Q4\_Methode\_BinomialeNegative.r}}
+      \end{ref_r}
+
+      \vspace{-1ex}
+      \begin{commentaire}
+          \hspace{-1ex}\emph{On lance $10\;000 \;000$ simulations d'une loi binomiale
+          négative $\mathcal{BN}(r, p)$ de paramètres $r = 4$ et $p = 0.4$. Appliquées à $g(x)$, ces
+          mesures sont plutôt alignées. En traçant la droite des moindres
+          carrés, on peut estimer les paramètres $p_{g_3}$ et $p_{g_2}$ comme expliqué ci-dessus :}
+
+          \[
+                p_{g_3} \simeq 0.3953\qquad\text{et}\qquad p_{g_4} \simeq 0.3784
+          \]
+
+          \medskip
+          \emph{Il faut noter que les valeurs maximales de l'échantillon ont été supprimées avant de tracer la droite
+          de la régression linéaire. Avec la commande \texttt{head}, on enlève ainsi le dernier cinquième des données triées.
+          En effet, avec la binomiale négative, les valeurs sont concentrées autour de la moyenne. Pour autant, la droite linéaire minimise
+          l'écart pour tous les points, et les valeurs maximales isolées perturbent l'alignement.}
+
+          \medskip
+          \emph{L'approximation du paramètre $p$ pourrait d'ailleurs être encore meilleure si on enlevait plus de valeurs à droite}.
+      \end{commentaire}
+
+      \bigskip
+      \medskip
       \quest{QUESTION 5}. On suppose désormais que le paramètre $r$ est inconnu.
       On va donc chercher à estimer simultanément les deux paramètres $(r, p)$ via la méthode des moments.
 
       \medskip
-      Pour cela, on rappelle les égalités suivantes
-      $
-        \begin{cases}
-            E[X] = \frac{r}{p} \\
-            Var(X) = \frac{r (1 - p)}{p^2}
-        \end{cases}
-      $
+      Pour cela, on rappelle les égalités suivantes :
+      \[
+            E[X] = \frac{r}{p}\qquad\text{et}\qquad Var(X) = \frac{r (1 - p)}{p^2}
+      \]
+
       \begin{calculs}
           \vspace{-2ex}
           \begin{equation*}
@@ -394,27 +425,28 @@
           \end{equation*}
 
           \emph{On en déduit ainsi que :}
-
           \[
-              \tilde{p}_n = \frac{\overline{X}_n}{\overline{X}_n + S_n^2}
-          \]
-
-          \[
-              \tilde{r}_n = \frac{\overline{X}_n^2}{\overline{X}_n + S_n^2}
+                \tilde{p}_n = \frac{\overline{X}_n}{\overline{X}_n + S_n^2}\qquad\text{et}\qquad \tilde{r}_n = \frac{\overline{X}_n^2}{\overline{X}_n + S_n^2}
           \]
       \end{calculs}
 
-      \quest{QUESTION 6}. ETAPE 1. On détermine $z = \min\limits_{i} x_i$.
-      En effet, la valeur de $r$ ne peut pas être supérieure à la valeur des $x_i$. \newline
+      \medskip
+      \bigskip
+      \quest{QUESTION 6}. On propose l'algorithme suivant :
 
-      ETAPE 2. Pour chaque valeur de $r$ possible, donc pour tout $i \in \llbracket 1; z \rrbracket$, on calcule
-      l'estimateur $\hat{p}_{n, i} = \frac{i}{\overline{X}_n}$ (sur le modèle de la question 1). \newline
+        \begin{enumerate}
+            \item On détermine $z = \min x_i$ pour trouver une première borne à $r$.\newline
+            En effet, la valeur de $r$ ne peut pas être supérieure à la valeur des $x_i$. \newline
 
-      ETAPE 3. Pour chaque couple $(r_i, p_i) = (i, \hat{p}_{n, i})$, on calcule sa vraisemblance.\newline
+            \item Pour chaque valeur de $r$ possible, donc pour tout $i \in \llbracket 1; z \rrbracket$, on calcule
+            sur le modèle de la \textbf{question 1} l'estimateur par maximum de vraisemblance $\hat{p}_{n, i} = \frac{i}{\overline{X}_n}$.\newline
 
-      ETAPE 4. On en déduit $(\hat{r}_{n}, \hat{p}_{n}) = argmax en i \mathcal{L}(r_i, p_i; x_1, ..., x_n)$.
-      faire une petite phrase de conclusion
+            \item Pour chaque couple $(r_i, p_i) = (i, \hat{p}_{n, i})$, on calcule sa vraisemblance.\newline
 
+            \item On trouve $(\hat{r}_{n}, \hat{p}_{n}) = \argmax\limits_{i} \mathcal{L}(r_i, p_i; x_1, ..., x_n)$ parmi les vraisemblances de l'étape 3.
+        \end{enumerate}
+
+    \newpage
     \section{PARTIE 2 ECRIRE LE TITRE}
 
       \quest{QUESTION 1}. Faire comme pour l'exercice sur la pollution.

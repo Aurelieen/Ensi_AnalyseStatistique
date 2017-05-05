@@ -5,24 +5,50 @@
 p_r = 4
 p_p = 0.4
 
-donnees = rnbinom(10000, p_r, p_p) + p_r
+donnees = rnbinom(10000000, p_r, p_p) + p_r
 donnees_ord = sort(donnees)
 
-# Fonction g(x) expérimentale suggérée dans le compte-rendu
-g <- function(x) {
-  if (length(x[x == (x+1)]) > 0) {
-    return(x * (length(x[x == x]) / length(x[x == (x+1)])))
+# FONCTION
+repartition <- function(echantillon) {
+  table_d = c()
+  
+  for (i in 1:max(echantillon)) {
+    table_d[i] = as.double(length(echantillon[echantillon == i]))
   }
+  
+  print(table_d)
+  return(table_d)
 }
+
+# FONCTION
+g <- function(echantillon, table_d) {
+  table_g = c()
+  
+  for (i in 1:max(echantillon)) {
+    if (!is.na(table_d[i + 1]) & table_d[i + 1] > 0) {
+      table_g = c(table_g, i * table_d[i] / table_d[i + 1])
+      ensemble_i = c(ensemble_i, i)
+    }
+  }
+  
+  return(list(table_g, ensemble_i))
+}
+
 
 # Dessin du nuage de points (x, g(x))
 graphe_probabilites <- function(echantillon, r, p) {
   table_d = repartition(echantillon)
-  plot(echantillon, g(echantillon))
+  axes = g(echantillon, table_d)
+  
+  table_g = head(axes[[1]], -length(axes[[1]])/5)
+  ensemble_i = head(axes[[2]], -length(axes[[2]])/5)
+  
+  plot(ensemble_i, table_g, xlab="Données x de loi binomiale négative simulées", ylab="g(x)")
+  title("Vérification de la méthode 1.4 par simulation", col.main="chartreuse4")
   
   # Application de la régression linéaire
-  abs = echantillon
-  ord = g(echantillon)
+  abs = ensemble_i
+  ord = table_g
   reg = lm(ord~abs)
   lines(abs, fitted.values(reg))
   
@@ -42,5 +68,5 @@ pg2 = resultat[[1]][1]
 pg3 = resultat[[2]][1]
 
 # Coefficients
-pg2
-pg3
+print(pg2)
+print(pg3)
