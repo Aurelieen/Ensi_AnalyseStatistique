@@ -1,5 +1,4 @@
-# Exercice 3 - Question 1
-# Simulation d'une loi géométrique et vérification des intervalles de confiance
+# Exercice 3
 
 # Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p
 
@@ -19,6 +18,8 @@ simule_geometriques <- function(m,n,p)
   echantillons
 }
 
+#Q1 - Vérification des intervalles de confiance
+
 # Fonction évaluant l'intervalle de confiance asymptotique de seuil alpha
 # pour une échantillon donné suivant une loi géométrique
 
@@ -36,9 +37,7 @@ intervalle <- function(echantillon, alpha)
   # ON évalue l'intervalle
   b_inf <- Pn - (1/2)*lambda*(Pn^2)*(1 + inter)
   b_sup <- Pn - (1/2)*lambda*(Pn^2)*(1 - inter)
-  cat("Pn ", Pn, "\n")
   IC <- c(b_inf,b_sup)
-  cat("IC ", IC, "\n")
   IC
 }
 
@@ -67,7 +66,9 @@ validation_intervalles <- function(m,n,p,alpha)
 
 }
 
-# validation_intervalles(10000,1000,0.4,0.05)
+validation_intervalles(10000,1000,0.4,0.05)
+
+# Q2 - Vérification de la loi faible des grands nombres
 
 # Fonction simulant m échantillons de taille n de la loi géométrique de paramètre p, et calculant
 # ensuite leur moyenne empirique. Elle affiche ensuite si le nombre de moyennes empiriques ayant 
@@ -79,16 +80,16 @@ validation_grands_nombres <- function(m,n,p,e)
   echantillons <- simule_geometriques(m,n,p)
   # Validation des moyennes empiriques
   esperance <- 1/p
-  bonnes_moyennes <- 0
+  moyennes_justes <- 0
   for (k in (1:m))
   {
     moyenne_empirique = mean(echantillons[k,])
     if (abs(moyenne_empirique - esperance) < e)
     {
-      bonnes_moyennes <- bonnes_moyennes + 1
+      moyennes_justes <- moyennes_justes + 1
     }
   }
-  cat(bonnes_moyennes, "échantillons (de taille",n,") sur les", m ,"simulés ont un écart entre leur espérance et leur moyenne empirique inférieur à", e, "\n")
+  cat(moyennes_justes, "échantillons (de taille",n,") sur les", m ,"simulés ont un écart entre leur espérance et leur moyenne empirique inférieur à", e, "\n")
 }
 
 # Execution en faisant augmenter la valeur de n
@@ -98,11 +99,13 @@ validation_grands_nombres(100,5000,0.7,0.05)
 # On peut conclure de ces résultats que la moyenne empirique se rapproche bien de l'espérance
 # quand n augmente, ce qui confirme le résultat de la loi faible des grands nombre
 
+# Q3 - Validation du théorème central limite
+
 validation_theoreme_central <- function(m,n,p)
 {
   # Simulation des m échantillons de taille n et de paramètre p
   echantillons <- simule_geometriques(m,n,p)
-  # Validation des moyennes empiriques
+  # Calcul des moyennes empiriques
   moyennes <- matrix(0,1,m)
   moy <- 1/p
   std <- sqrt(1-p)/p
@@ -110,15 +113,19 @@ validation_theoreme_central <- function(m,n,p)
   {
     moyennes[k] <- mean(echantillons[k,])
   }
+  # Affichage de l'histogramme à classes des moyennes empiriques ainsi que de la loi normale associée
   min <- min(moyennes)
   max <- max(moyennes)
   brk <- seq(min,max,length = 20)
-  hist(moyennes,xlab = "", ylab = "Effectif", breaks = brk)
+  hist(moyennes,xlab = "", ylab = "Effectif", breaks = brk, main = "Histogramme des moyennes et loi normale associée")
   par(new=TRUE)
-  plot(function(x) dnorm(x,moy,std),  moy-4*std, moy+4*std,xlab="Moyenne",ylab="",main = "", col = "red")
+  plot(function(x) dnorm(x,moy,std),  moy-4*std, moy+4*std,xlab="Moyenne empirique de l'échantillon (loi géométrique)",ylab="",main = "",xaxt="n", yaxt="n", col = "red")
 }
 
-validation_theoreme_central(1000,20000,0.2)
+validation_theoreme_central(1000,1000,0.2)
+
+# Pour un nombre d'échantillons suffisement grand (m = 1000), on voit que quand n augmente la loi de répartition
+# des moyennes empiriques se rapproche d'une loi normale
 
 
 
