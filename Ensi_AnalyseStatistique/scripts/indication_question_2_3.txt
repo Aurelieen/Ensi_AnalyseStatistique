@@ -1,9 +1,0 @@
-Question 2.3 : 
-
-
-
-- il suffit de calculer pour chaque échantillon, la moyenne de la série pour avoir le nombre moyen de fixations necessaires pour identifier le texte. (Méthode 1)
-  On calcule l'espérence de la loi qui a été choisie pour l'échantillon en question. (Méthode 2)
-
-- Pour calculer la probabilité que le nombre de fixation soit supérieur à 10, on calcule le nombre de valeurs supérieures à 10 dans chaque échantillon, qu'on divise ensuite par le nombre total de valeurs. (Méthode1)
-  On calcule P(X>10) pour la loi qui a été choisie pour l'échantillon en question. (Méthode 2)
